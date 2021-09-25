@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/main.css" />
+		<link
+			rel="stylesheet"
+			href="./font/fontawesome-pro-5.15.3-web/css/all.min.css"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<section class="dashboard">
+				<div class="dashboard-content">
+					<p>Now playing</p>
+					<div class="dashboard-content__name-song">Sting 57th & 9th</div>
+				</div>
+				<div class="dashboard__img"></div>
+				<input
+					id="progress"
+					class="progress"
+					type="range"
+					value="0"
+					step="0.1"
+					min="0"
+					max="100"
+				/>
+				<div class="dashboard-menu">
+					<div class="dashboard-menu__item loop-btn">
+						<i class="fad fa-sync-alt"></i>
+					</div>
+					<div class="dashboard-menu__item">
+						<i class="fad fa-step-backward prev-btn"></i>
+					</div>
+					<div class="mainController dashboard-menu__item play">
+						<i class="fad fa-play-circle play-icon"></i>
+						<i class="fad fa-pause-circle pause-icon"></i>
+					</div>
+					<div class="dashboard-menu__item next-btn">
+						<i class="fad fa-step-forward"></i>
+					</div>
+					<div class="dashboard-menu__item random-btn">
+						<i class="fad fa-random"></i>
+					</div>
+				</div>
+				<audio id="audio" src=""></audio>
+				<p class="next">Up next:</p>
+			</section>
+			<ul class="play-list"></ul>
+			<ul class="menu">
+				<li class="menu__item"><i class="fal fa-home"></i></li>
+				<li class="menu__item"><i class="fal fa-album-collection"></i></li>
+				<li class="menu__item"><i class="fad fa-play-circle"></i></li>
+				<li class="menu__item"><i class="fal fa-search"></i></li>
+				<li class="menu__item"><i class="fal fa-sliders-v"></i></li>
+			</ul>
+		</div>
+		<script src="./app.js"></script>
+	</body>
+</html>

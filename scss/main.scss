@@ -1,0 +1,218 @@
+@import './reset';
+
+$sky-blue: #37caec;
+$blue: #2a93d5;
+$darkblue: #125488;
+html {
+	font-family: 'Roboto', sans-serif;
+}
+
+* {
+	color: $darkblue;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 414px;
+	max-width: 100%;
+	height: 731px;
+	max-height: 100%;
+	box-shadow: 5px 5px 5px rgba(143, 141, 141, 0.459);
+	background: linear-gradient(#daf0ff, #b5e2ff);
+}
+
+.dashboard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: linear-gradient($darkblue, #b5e2ff);
+	padding: 20px 10px;
+	&-content {
+		width: 100%;
+		p {
+			text-align: center;
+			color: rgb(216, 101, 7);
+			margin-bottom: 10px;
+		}
+		&__name-song {
+			display: block;
+			text-align: center;
+			font-size: 20px;
+			font-weight: 500;
+			width: 100%;
+			background-color: $sky-blue;
+			border-radius: 15px;
+			padding: 5px;
+		}
+	}
+	&__img {
+		margin: 24px 0px;
+		background-repeat: none;
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		border: 2.5px solid $blue;
+		background-size: cover;
+		background-position: center;
+		background-repeat: none;
+		overflow: hidden;
+	}
+	.progress {
+		width: 100%;
+		-webkit-appearance: none;
+		height: 6px;
+		background: #d3d3d3;
+		outline: none;
+		opacity: 0.7;
+		-webkit-transition: 0.2s;
+		transition: opacity 0.2s;
+		margin-bottom: 10px;
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 12px;
+			height: 6px;
+			background-color: $darkblue;
+			cursor: pointer;
+		}
+	}
+	&-menu {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		&__item {
+			cursor: pointer;
+			font-size: 28px;
+			i {
+				color: #0977bb;
+			}
+			&:active {
+				i {
+					color: rgb(26, 26, 126);
+				}
+			}
+		}
+
+		&__item:nth-child(3) {
+			font-size: 64px;
+			i {
+				color: $darkblue;
+			}
+		}
+	}
+	.next {
+		background-color: white;
+		border-radius: 10px;
+		padding: 2.5px 5px;
+		position: absolute;
+		bottom: 0;
+		transform: translateY(50%);
+	}
+}
+
+.play-list {
+	flex: 1;
+	padding: 16px;
+	background-color: #6d93b1;
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+	scrollbar-width: none; /* for Firefox */
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	.song {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		background-color: skyblue;
+		border-radius: 6px;
+		margin-bottom: 10px;
+		box-shadow: 1px 5px 5px rgba(6, 37, 105, 0.274);
+		padding: 10px;
+		&--active {
+			background: linear-gradient(skyblue, rgb(34, 194, 194));
+		}
+		&__thumb {
+			margin-right: 20px;
+			border: 1.5px solid $blue;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-image: url(../img/cuoithoi.jpg);
+			background-size: cover;
+			background-position: center;
+		}
+
+		&__content {
+			flex: 1;
+			.song-name {
+				font-size: 18px;
+				font-weight: 500;
+			}
+			.song-artist {
+				font-size: 14px;
+				color: rgba(6, 67, 92, 0.308);
+			}
+		}
+		&__more {
+			cursor: pointer;
+			justify-self: flex-end;
+			font-size: 28px;
+		}
+	}
+}
+
+.menu {
+	width: 100%;
+	background-color: $darkblue;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	height: 40px;
+	justify-content: space-around;
+	align-items: center;
+	&__item {
+		font-size: 24px;
+		i {
+			color: skyblue;
+		}
+	}
+}
+
+.play {
+	.play-icon {
+		display: none;
+	}
+	.pause-icon {
+		display: block;
+	}
+}
+
+.pause {
+	.play-icon {
+		display: block;
+	}
+	.pause-icon {
+		display: none;
+	}
+}
+
+.btn--active {
+	i {
+		color: rgb(26, 26, 126);
+	}
+}
