@@ -15,6 +15,7 @@ let imgHeight = currentSongImage.offsetHeight;
 let progress = $('.progress');
 let isRandom = false;
 let isLoop = false;
+let isPlay = true;
 
 const app = {
 	songs: [
@@ -98,9 +99,25 @@ const app = {
 		mainController.addEventListener('click', function () {
 			mainController.classList.toggle('pause');
 			mainController.classList.toggle('play');
-			if (mainController.classList.contains('pause')) audio.pause();
-			else audio.play();
+			if (mainController.classList.contains('pause')) {
+				audio.pause();
+				imgAnimation.pause();
+			} else {
+				audio.play();
+				imgAnimation.play();
+			}
 		});
+
+		// rotate the img dashboard
+
+		let imgAnimation = currentSongImage.animate(
+			[{ transform: 'rotate(360deg)' }],
+			{
+				duration: 10000,
+				iterations: Infinity,
+			}
+		);
+		imgAnimation.play();
 
 		// click progress bar
 		progress.onclick = function () {
@@ -121,23 +138,13 @@ const app = {
 		};
 		// click random button
 		randomBtn.onclick = function () {
-			if (!isRandom) {
-				isRandom = true;
-				randomBtn.classList.add('btn--active');
-			} else {
-				isRandom = false;
-				randomBtn.classList.remove('btn--active');
-			}
+			isRandom = !isRandom;
+			randomBtn.classList.toggle('btn--active');
 		};
 		// click loop button
 		loopBtn.onclick = function () {
-			if (!isLoop) {
-				isLoop = true;
-				loopBtn.classList.add('btn--active');
-			} else {
-				isLoop = false;
-				loopBtn.classList.remove('btn--active');
-			}
+			isLoop = !isLoop;
+			loopBtn.classList.toggle('btn--active');
 		};
 		// click at play list
 		let listSong = playList.querySelectorAll('.song');
@@ -220,11 +227,10 @@ const app = {
 	},
 
 	start: function () {
-		this.loadCurrentSong();
 		this.renderer();
+		this.loadCurrentSong();
 		this.handles();
 		this.autoNext();
-		console.log(this.listSong);
 	},
 };
 
