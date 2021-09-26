@@ -158,7 +158,6 @@ const app = {
 		$('.song.song--active').scrollIntoView({
 			behavior: 'smooth',
 			block: 'center',
-			inline: 'nearest',
 		});
 	},
 	renderer: function () {
