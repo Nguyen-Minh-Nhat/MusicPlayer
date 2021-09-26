@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-let playList = $('.play-list');
+let playlist = $('.play-list');
 let currentSongName = $('.dashboard-content__name-song');
 let currentSongImage = $('.dashboard__img');
 let audio = $('#audio');
@@ -88,9 +88,9 @@ const app = {
 	],
 	handles: function () {
 		// scroll play list
-		playList.onscroll = function () {
-			let newImgWidth = imgWidth - playList.scrollTop;
-			let newImgHeight = imgHeight - playList.scrollTop;
+		playlist.onscroll = function () {
+			let newImgWidth = imgWidth - playlist.scrollTop;
+			let newImgHeight = imgHeight - playlist.scrollTop;
 			currentSongImage.style.width = newImgWidth > 0 ? newImgWidth + 'px' : 0;
 			currentSongImage.style.height =
 				newImgHeight > 0 ? newImgHeight + 'px' : 0;
@@ -147,20 +147,18 @@ const app = {
 			loopBtn.classList.toggle('btn--active');
 		};
 		// click at play list
-		let listSong = playList.querySelectorAll('.song');
-		listSong.forEach(function (song, index) {
-			song.onclick = function () {
-				currentSongIndex = index;
-				app.currentSongInPlaylist(listSong);
-				app.loadCurrentSong();
-			};
-		});
+		playlist.onclick = (e) => {
+			const songElement = e.target.closest('.song');
+			currentSongIndex = songElement.dataset.index;
+			app.loadCurrentSong();
+			app.activeCurrentSongInPlaylist();
+		};
 	},
 	renderer: function () {
 		let html = this.songs.map(function (song, index) {
 			return `<li class="song ${
 				index == currentSongIndex ? 'song--active' : ''
-			}">
+			}" data-index="${index}">
 					<div class="song__thumb" style="background-image: url('${song.image}')"></div>
 					<div class="song__content">
 						<h3 class="song-name">${song.name}</h3>
@@ -169,7 +167,7 @@ const app = {
 					<div class="song__more"><i class="fad fa-ellipsis-h"></i></div>
 				</li>`;
 		});
-		playList.innerHTML = html.join('');
+		playlist.innerHTML = html.join('');
 	},
 
 	loadCurrentSong: function () {
@@ -185,7 +183,7 @@ const app = {
 		if (currentSongIndex >= app.songs.length) {
 			currentSongIndex = 0;
 		}
-		app.renderer();
+		app.activeCurrentSongInPlaylist();
 	},
 
 	prevSong: function () {
@@ -193,7 +191,7 @@ const app = {
 		if (currentSongIndex < 0) {
 			currentSongIndex = app.songs.length - 1;
 		}
-		app.renderer();
+		app.activeCurrentSongInPlaylist();
 	},
 
 	autoNext: function () {
@@ -204,7 +202,7 @@ const app = {
 				} else app.nextSong();
 			}
 			app.loadCurrentSong();
-			app.renderer();
+			app.activeCurrentSongInPlaylist();
 		});
 	},
 
@@ -214,15 +212,17 @@ const app = {
 			app.updateProgress(progressValue);
 		};
 	},
-
+	activeCurrentSongInPlaylist: function () {
+		$('.song.song--active').classList.remove('song--active');
+		let listSong = $$('.song');
+		listSong.forEach(function (song, index) {
+			if (index == currentSongIndex) {
+				song.classList.add('song--active');
+			}
+		});
+	},
 	updateProgress: function (updateValue) {
 		progress.value = updateValue;
-	},
-	currentSongInPlaylist: function (listSong) {
-		listSong.forEach(function (song) {
-			song.classList.remove('song--active');
-		});
-		listSong[currentSongIndex].classList.add('song--active');
 	},
 	randomSong: function () {
 		let newCurrentSongIndex;

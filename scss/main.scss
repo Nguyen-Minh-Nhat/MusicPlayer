@@ -54,6 +54,7 @@ body {
 			background-color: $sky-blue;
 			border-radius: 15px;
 			padding: 5px;
+			text-shadow: 1px 1px 0px rgb(6, 141, 141);
 		}
 	}
 	&__img {
@@ -146,9 +147,7 @@ body {
 		&:active {
 			opacity: 0.8;
 		}
-		&--active {
-			background: linear-gradient(skyblue, rgb(34, 194, 194));
-		}
+
 		&__thumb {
 			margin-right: 20px;
 			border: 1.5px solid $blue;
@@ -167,8 +166,22 @@ body {
 				font-weight: 500;
 			}
 			.song-artist {
-				font-size: 14px;
-				color: rgba(6, 67, 92, 0.308);
+				opacity: 1;
+				font-size: 12px;
+				color: rgb(13, 144, 196);
+			}
+		}
+		&--active {
+			background: linear-gradient($darkblue, rgb(34, 194, 194));
+			.song-name {
+				color: skyblue;
+				text-shadow: 1px 1.5px 0px rgba(32, 28, 28, 1);
+			}
+			.song-artist {
+				color: rgb(7, 23, 29);
+			}
+			.song__thumb {
+				border-color: $darkblue;
 			}
 		}
 		&__more {
