@@ -183,6 +183,11 @@ body {
 			.song__thumb {
 				border-color: $darkblue;
 			}
+			.song__more {
+				i {
+					color: $sky-blue;
+				}
+			}
 		}
 		&__more {
 			cursor: pointer;

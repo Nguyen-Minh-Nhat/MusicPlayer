@@ -351,6 +351,10 @@ body {
   border-color: #125488;
 }
 
+.play-list .song--active .song__more i {
+  color: #37caec;
+}
+
 .play-list .song__more {
   cursor: pointer;
   justify-self: flex-end;

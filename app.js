@@ -154,6 +154,13 @@ const app = {
 			app.activeCurrentSongInPlaylist();
 		};
 	},
+	scrollActiveSong: function () {
+		$('.song.song--active').scrollIntoView({
+			behavior: 'smooth',
+			block: 'center',
+			inline: 'nearest',
+		});
+	},
 	renderer: function () {
 		let html = this.songs.map(function (song, index) {
 			return `<li class="song ${
@@ -176,6 +183,7 @@ const app = {
 		currentSongImage.style.backgroundImage = `url('${currentSong.image}')`;
 		audio.src = `${currentSong.path}`;
 		audio.play();
+		app.scrollActiveSong();
 	},
 
 	nextSong: function () {
