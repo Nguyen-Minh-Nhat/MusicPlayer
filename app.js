@@ -120,7 +120,7 @@ const app = {
 		imgAnimation.play();
 
 		// click progress bar
-		progress.onclick = function () {
+		progress.oninput = function () {
 			seekTime = (audio.duration / 100) * progress.value;
 			audio.currentTime = seekTime;
 		};
@@ -157,8 +157,10 @@ const app = {
 		});
 	},
 	renderer: function () {
-		let html = this.songs.map(function (song) {
-			return `<li class="song">
+		let html = this.songs.map(function (song, index) {
+			return `<li class="song ${
+				index == currentSongIndex ? 'song--active' : ''
+			}">
 					<div class="song__thumb" style="background-image: url('${song.image}')"></div>
 					<div class="song__content">
 						<h3 class="song-name">${song.name}</h3>
@@ -179,17 +181,19 @@ const app = {
 	},
 
 	nextSong: function () {
-		currentSongIndex += 1;
+		currentSongIndex++;
 		if (currentSongIndex >= app.songs.length) {
 			currentSongIndex = 0;
 		}
+		app.renderer();
 	},
 
 	prevSong: function () {
-		currentSongIndex -= 1;
+		currentSongIndex--;
 		if (currentSongIndex < 0) {
 			currentSongIndex = app.songs.length - 1;
 		}
+		app.renderer();
 	},
 
 	autoNext: function () {
@@ -200,6 +204,7 @@ const app = {
 				} else app.nextSong();
 			}
 			app.loadCurrentSong();
+			app.renderer();
 		});
 	},
 
@@ -220,10 +225,11 @@ const app = {
 		listSong[currentSongIndex].classList.add('song--active');
 	},
 	randomSong: function () {
-		newCurrentSongIndex = Math.floor(Math.random() * 10);
-		if (currentSongIndex === newCurrentSongIndex) {
-			currentSongIndex = newCurrentSongIndex + 1;
-		} else currentSongIndex = newCurrentSongIndex;
+		let newCurrentSongIndex;
+		do {
+			newCurrentSongIndex = Math.floor(Math.random() * this.songs.length);
+		} while (newCurrentSongIndex == currentSongIndex);
+		currentSongIndex = newCurrentSongIndex;
 	},
 
 	start: function () {

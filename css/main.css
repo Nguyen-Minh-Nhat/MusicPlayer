@@ -300,6 +300,10 @@ body {
   padding: 10px;
 }
 
+.play-list .song:active {
+  opacity: 0.8;
+}
+
 .play-list .song--active {
   background: -webkit-gradient(linear, left top, left bottom, from(skyblue), to(#22c2c2));
   background: linear-gradient(skyblue, #22c2c2);

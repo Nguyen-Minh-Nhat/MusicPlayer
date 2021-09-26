@@ -143,6 +143,9 @@ body {
 		margin-bottom: 10px;
 		box-shadow: 1px 5px 5px rgba(6, 37, 105, 0.274);
 		padding: 10px;
+		&:active {
+			opacity: 0.8;
+		}
 		&--active {
 			background: linear-gradient(skyblue, rgb(34, 194, 194));
 		}
