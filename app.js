@@ -25,6 +25,7 @@ let volumeController = $('.volume');
 let volumeValue = 1;
 let playlistBtn = $('.playlist-btn');
 let dashboard = $('.dashboard');
+let oldVolumeValue = volumeValue;
 
 const app = {
 	songs: [
@@ -179,8 +180,9 @@ const app = {
 		// change value
 		volumeController.onmousedown = (e) => {
 			if (isMute) {
-				volumeProgress.value = 100;
+				volumeProgress.value = oldVolumeValue * 100; // change both of volume and volume progress
 			} else {
+				oldVolumeValue = volumeValue;
 				volumeProgress.value = 0;
 			}
 			app.changeVolume();
