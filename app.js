@@ -17,6 +17,7 @@ let isRandom = false;
 let isLoop = false;
 let isPlay = true;
 let isMute = false;
+let MUSIC_PLAYER_STORAGE_KEY = 'music-key';
 
 let volumeProgress = $('.volume-progress');
 
@@ -93,6 +94,15 @@ const app = {
 			path: './music/MuoiNam.mp3',
 		},
 	],
+	config: JSON.parse(localStorage.getItem('MUSIC_PLAYER_STORAGE_KEY')) || {},
+	setConfig: function (key, value) {
+		app.config[key] = value;
+
+		localStorage.setItem(
+			'MUSIC_PLAYER_STORAGE_KEY',
+			JSON.stringify(this.config)
+		);
+	},
 	handles: function () {
 		// scroll play list
 		playlist.onscroll = function () {
@@ -149,12 +159,14 @@ const app = {
 		// click random button
 		randomBtn.onclick = function () {
 			isRandom = !isRandom;
-			randomBtn.classList.toggle('btn--active');
+			app.changeStateBtn(randomBtn, isRandom);
+			app.setConfig('isRandom', isRandom);
 		};
 		// click loop button
 		loopBtn.onclick = function () {
 			isLoop = !isLoop;
-			loopBtn.classList.toggle('btn--active');
+			app.changeStateBtn(loopBtn, isLoop);
+			app.setConfig('isLoop', isLoop);
 		};
 		// click at play list
 		playlist.onclick = (e) => {
@@ -215,6 +227,10 @@ const app = {
 				</li>`;
 		});
 		playlist.innerHTML = html.join('');
+		isLoop = app.config.isLoop;
+		isRandom = app.config.isRandom;
+		app.changeStateBtn(loopBtn, isLoop);
+		app.changeStateBtn(randomBtn, isRandom);
 	},
 
 	loadCurrentSong: function () {
@@ -291,6 +307,11 @@ const app = {
 		currentSongIndex = newCurrentSongIndex;
 	},
 
+	changeStateBtn: function (stateKey, stateValue) {
+		if (stateValue) {
+			stateKey.classList.add('btn--active');
+		} else stateKey.classList.remove('btn--active');
+	},
 	start: function () {
 		this.renderer();
 		this.loadCurrentSong();
