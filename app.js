@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-let playlist = $('.play-list');
+let playlist = $('.playlist');
 let currentSongName = $('.dashboard-content__name-song');
 let currentSongImage = $('.dashboard__img');
 let audio = $('#audio');
@@ -22,6 +22,7 @@ let volumeProgress = $('.volume-progress');
 
 let volumeController = $('.volume');
 let volumeValue = 1;
+let playlistBtn = $('.playlist-btn');
 
 const app = {
 	songs: [
@@ -175,7 +176,11 @@ const app = {
 			e.stopPropagation();
 			app.changeVolume();
 		};
+		playlistBtn.onclick = function () {
+			playlist.classList.toggle('playlist--show');
+		};
 	},
+	// click playlist button
 
 	changeVolume: function () {
 		let iconVolume = volumeController.querySelector('i');

@@ -32,6 +32,8 @@ body {
 }
 
 .dashboard {
+	justify-content: center;
+	flex: 1;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -42,6 +44,9 @@ body {
 
 	padding: 20px 10px;
 	&-content {
+		flex: 1;
+		margin-top: 0px;
+		justify-self: flex-start;
 		width: 100%;
 		p {
 			text-align: center;
@@ -92,6 +97,7 @@ body {
 		}
 	}
 	&-menu {
+		flex: 1;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -130,8 +136,8 @@ body {
 	}
 }
 
-.play-list {
-	flex: 1;
+.playlist {
+	flex: 0;
 	padding: 16px;
 	background-color: #6d93b1;
 	-ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -140,7 +146,10 @@ body {
 	&::-webkit-scrollbar {
 		display: none;
 	}
-
+	&--show {
+		flex: 1;
+	}
+	transition: 0.5s linear;
 	.song {
 		cursor: pointer;
 		display: flex;
