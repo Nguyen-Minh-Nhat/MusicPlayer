@@ -296,8 +296,8 @@ body {
   scrollbar-width: none;
   /* for Firefox */
   overflow-y: scroll;
-  -webkit-transition: 0.5s linear;
-  transition: 0.5s linear;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .playlist::-webkit-scrollbar {

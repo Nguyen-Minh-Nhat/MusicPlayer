@@ -143,13 +143,13 @@ body {
 	-ms-overflow-style: none; /* for Internet Explorer, Edge */
 	scrollbar-width: none; /* for Firefox */
 	overflow-y: scroll;
+	transition: 0.5s ease;
 	&::-webkit-scrollbar {
 		display: none;
 	}
 	&--show {
 		flex: 1;
 	}
-	transition: 0.5s linear;
 	.song {
 		cursor: pointer;
 		display: flex;
