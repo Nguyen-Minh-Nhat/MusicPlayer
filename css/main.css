@@ -381,6 +381,8 @@ body {
 }
 
 .menu__item {
+  width: 20%;
+  text-align: center;
   font-size: 24px;
 }
 
@@ -407,5 +409,65 @@ body {
 .btn--active i {
   color: #1a1a7e;
   color: wheat;
+}
+
+.volume {
+  position: relative;
+}
+
+.volume:hover .volume-bar {
+  display: block;
+}
+
+.volume::before {
+  content: '';
+  position: absolute;
+  width: 44px;
+  height: 10px;
+  top: -10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.volume-bar {
+  position: absolute;
+  display: none;
+  width: 44px;
+  height: 200px;
+  background-color: #fff;
+  top: -210px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.volume-bar .volume-progress {
+  position: absolute;
+  background-color: #0977bb;
+  left: 20px;
+  top: 176px;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+  width: 196px;
+  height: 40px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  overflow: hidden;
+}
+
+.volume-bar .volume-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0px;
+  height: 40px;
+  background-color: #125488;
+  cursor: pointer;
+  -webkit-box-shadow: -300px 0 0 300px #00fdc4;
+          box-shadow: -300px 0 0 300px #00fdc4;
+}
+
+i {
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

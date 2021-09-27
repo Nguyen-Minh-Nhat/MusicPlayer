@@ -67,7 +67,12 @@
 				<li class="menu__item"><i class="fal fa-album-collection"></i></li>
 				<li class="menu__item"><i class="fad fa-play-circle"></i></li>
 				<li class="menu__item"><i class="fal fa-search"></i></li>
-				<li class="menu__item"><i class="fal fa-sliders-v"></i></li>
+				<li class="menu__item volume">
+					<i class="fal fa-volume-up"></i>
+					<div class="volume-bar">
+            <input type="range" value="100" step=".1" min="0" max="100"class="volume-progress"></input>
+          </div>
+				</li>
 			</ul>
 		</div>
 		<script src="./app.js"></script>

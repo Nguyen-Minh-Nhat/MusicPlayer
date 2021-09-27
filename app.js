@@ -16,6 +16,12 @@ let progress = $('.progress');
 let isRandom = false;
 let isLoop = false;
 let isPlay = true;
+let isMute = false;
+
+let volumeProgress = $('.volume-progress');
+
+let volumeController = $('.volume');
+let volumeValue = 1;
 
 const app = {
 	songs: [
@@ -131,11 +137,13 @@ const app = {
 		prevBtn.onclick = function () {
 			app.prevSong();
 			app.loadCurrentSong();
+			imgAnimation.play();
 		};
 		// click next button
 		nextBtn.onclick = function () {
 			app.nextSong();
 			app.loadCurrentSong();
+			imgAnimation.play();
 		};
 		// click random button
 		randomBtn.onclick = function () {
@@ -154,6 +162,33 @@ const app = {
 			app.loadCurrentSong();
 			app.activeCurrentSongInPlaylist();
 		};
+		// change value
+		volumeController.onmousedown = (e) => {
+			if (isMute) {
+				volumeProgress.value = 100;
+			} else {
+				volumeProgress.value = 0;
+			}
+			app.changeVolume();
+		};
+		volumeProgress.oninput = (e) => {
+			e.stopPropagation();
+			app.changeVolume();
+		};
+	},
+
+	changeVolume: function () {
+		let iconVolume = volumeController.querySelector('i');
+		volumeValue = volumeProgress.value / 100;
+		audio.volume = volumeValue;
+		if (volumeValue === 0) {
+			isMute = true;
+			iconVolume.classList = 'fal  fa-volume-mute';
+		} else {
+			isMute = false;
+			if (volumeValue <= 0.5) iconVolume.classList = 'fal fa-volume';
+			else iconVolume.classList = 'fal  fa-volume-up';
+		}
 	},
 	scrollActiveSong: function () {
 		$('.song.song--active').scrollIntoView({
