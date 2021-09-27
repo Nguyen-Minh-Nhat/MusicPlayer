@@ -97,14 +97,15 @@ const app = {
 		};
 		// click play button
 		mainController.addEventListener('click', function () {
-			mainController.classList.toggle('pause');
-			mainController.classList.toggle('play');
-			if (mainController.classList.contains('pause')) {
-				audio.pause();
-				imgAnimation.pause();
-			} else {
+			isPlay = !isPlay;
+			app.changeBtnPlay();
+
+			if (isPlay) {
 				audio.play();
 				imgAnimation.play();
+			} else {
+				audio.pause();
+				imgAnimation.pause();
 			}
 		});
 
@@ -182,9 +183,20 @@ const app = {
 		currentSongImage.style.backgroundImage = `url('${currentSong.image}')`;
 		audio.src = `${currentSong.path}`;
 		audio.play();
+		isPlay = true;
 		app.scrollActiveSong();
+		app.changeBtnPlay();
 	},
 
+	changeBtnPlay: function () {
+		if (isPlay) {
+			mainController.classList.remove('pause');
+			mainController.classList.add('play');
+		} else {
+			mainController.classList.add('pause');
+			mainController.classList.remove('play');
+		}
+	},
 	nextSong: function () {
 		currentSongIndex++;
 		if (currentSongIndex >= app.songs.length) {
