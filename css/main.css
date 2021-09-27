@@ -172,7 +172,15 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(3, 3, 54, 0.521)), to(#0c8adf73)), url("../img/background.jpg") center center no-repeat;
   background: linear-gradient(rgba(3, 3, 54, 0.521), #0c8adf73), url("../img/background.jpg") center center no-repeat;
   background-size: cover;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
   padding: 20px 10px;
+}
+
+.dashboard--push-up {
+  -webkit-box-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
 }
 
 .dashboard-content {
@@ -271,8 +279,7 @@ body {
 }
 
 .dashboard-menu__item:nth-child(3) i {
-  color: #125488;
-  color: wheat;
+  color: #f2c900;
 }
 
 .dashboard .next {
@@ -429,8 +436,7 @@ body {
 }
 
 .btn--active i {
-  color: #1a1a7e;
-  color: wheat;
+  color: #f2c900;
 }
 
 .volume {

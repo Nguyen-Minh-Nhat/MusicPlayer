@@ -24,6 +24,7 @@ let volumeProgress = $('.volume-progress');
 let volumeController = $('.volume');
 let volumeValue = 1;
 let playlistBtn = $('.playlist-btn');
+let dashboard = $('.dashboard');
 
 const app = {
 	songs: [
@@ -188,11 +189,12 @@ const app = {
 			e.stopPropagation();
 			app.changeVolume();
 		};
+		// click playlist button
 		playlistBtn.onclick = function () {
+			dashboard.classList.toggle('dashboard--push-up');
 			playlist.classList.toggle('playlist--show');
 		};
 	},
-	// click playlist button
 
 	changeVolume: function () {
 		let iconVolume = volumeController.querySelector('i');
@@ -208,10 +210,10 @@ const app = {
 		}
 	},
 	scrollActiveSong: function () {
-		$('.song.song--active').scrollIntoView({
-			behavior: 'smooth',
-			block: 'center',
-		});
+		// $('.song.song--active').scrollIntoView({
+		// 	behavior: 'smooth',
+		// 	block: 'center',
+		// });
 	},
 	renderer: function () {
 		let html = this.songs.map(function (song, index) {

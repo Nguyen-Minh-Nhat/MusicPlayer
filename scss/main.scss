@@ -41,6 +41,11 @@ body {
 	background: linear-gradient(rgba(3, 3, 54, 0.521), #0c8adf73),
 		url('../img/background.jpg') center center no-repeat;
 	background-size: cover;
+	transition: 0.5s ease;
+
+	&--push-up {
+		flex: 0;
+	}
 
 	padding: 20px 10px;
 	&-content {
@@ -121,8 +126,7 @@ body {
 		&__item:nth-child(3) {
 			font-size: 64px;
 			i {
-				color: $darkblue;
-				color: wheat;
+				color: #f2c900;
 			}
 		}
 	}
@@ -251,8 +255,7 @@ body {
 
 .btn--active {
 	i {
-		color: rgb(26, 26, 126);
-		color: wheat;
+		color: #f2c900;
 	}
 }
 .volume {
