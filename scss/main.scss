@@ -36,7 +36,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: linear-gradient($darkblue, #b5e2ff);
+	background: linear-gradient(rgba(3, 3, 54, 0.521), #0c8adf73),
+		url('/img/background.jpg') center center no-repeat;
+	background-size: cover;
+
 	padding: 20px 10px;
 	&-content {
 		width: 100%;
@@ -99,10 +102,12 @@ body {
 			font-size: 28px;
 			i {
 				color: #0977bb;
+				color: white;
 			}
 			&:active {
 				i {
-					color: rgb(26, 26, 126);
+					// color: rgb(26, 26, 126);
+					opacity: 0.8;
 				}
 			}
 		}
@@ -111,6 +116,7 @@ body {
 			font-size: 64px;
 			i {
 				color: $darkblue;
+				color: wheat;
 			}
 		}
 	}
@@ -235,5 +241,6 @@ body {
 .btn--active {
 	i {
 		color: rgb(26, 26, 126);
+		color: wheat;
 	}
 }

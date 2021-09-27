@@ -163,8 +163,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#125488), to(#b5e2ff));
-  background: linear-gradient(#125488, #b5e2ff);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(3, 3, 54, 0.521)), to(#0c8adf73)), url("/img/background.jpg") center center no-repeat;
+  background: linear-gradient(rgba(3, 3, 54, 0.521), #0c8adf73), url("/img/background.jpg") center center no-repeat;
+  background-size: cover;
   padding: 20px 10px;
 }
 
@@ -244,10 +245,11 @@ body {
 
 .dashboard-menu__item i {
   color: #0977bb;
+  color: white;
 }
 
 .dashboard-menu__item:active i {
-  color: #1a1a7e;
+  opacity: 0.8;
 }
 
 .dashboard-menu__item:nth-child(3) {
@@ -256,6 +258,7 @@ body {
 
 .dashboard-menu__item:nth-child(3) i {
   color: #125488;
+  color: wheat;
 }
 
 .dashboard .next {
@@ -403,5 +406,6 @@ body {
 
 .btn--active i {
   color: #1a1a7e;
+  color: wheat;
 }
 /*# sourceMappingURL=main.css.map */
