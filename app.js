@@ -75,7 +75,7 @@ const app = {
 			name: 'Like My Father',
 			singer: 'Jax',
 			image: './img/LikeMyFather.jpg',
-			path: './music/LikeMyFather-jax.mp3',
+			path: './music/LikeMyFather-Jax.mp3',
 		},
 		{
 			name: 'Memories',
